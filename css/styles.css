@@ -312,6 +312,11 @@ a {
 }
 
 /* ===== Team Section ===== */
+
+.container.team-container {
+  display: block;
+}
+
 .strategy-contacts-list {
   display: flex;
   justify-content: center;
@@ -365,12 +370,11 @@ a {
 .team-list {
   display: flex;
   justify-content: space-between;
-  gap: 24px;
   list-style: none;
   padding: 0;
   margin: 0;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 72px;
 }
 
 .team-card {
@@ -816,9 +820,6 @@ a {
   fill: transparent;
 }
 
-.checkbox-icon {
-}
-
 .checkbox-text:checked + .checkbox-label > .label-span {
   background-color: #404bbf;
   border: none;
@@ -849,49 +850,9 @@ a {
 
 /* МЕDIA QUERIES */
 
+/* 768 */
+
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 100%;
-    width: 768px;
-    padding-left: 16px;
-    padding-right: 16px;
-  }
-
-  .strategy-list {
-    gap: 24px;
-  }
-
-  .strategy-item {
-    width: calc((100% - 24px) / 2);
-  }
-}
-
-@media screen and (min-width: 1158px) {
-  .container {
-    width: 1158px;
-    padding-left: 15px;
-    padding-right: 15px;
-    margin: 0 auto;
-  }
-
-  .team-item {
-    width: calc((100% - 72px) / 4);
-  }
-
-  .team-title {
-    text-align: center;
-  }
-
-  .strategy-list {
-    gap: 24px;
-  }
-
-  .strategy-item {
-    width: calc((100% - 72px) / 4);
-  }
-}
-
-@media (min-width: 768px) {
   .strategy-card {
     text-align: left;
     font-weight: 500;
@@ -924,9 +885,60 @@ a {
     letter-spacing: 0.02em;
     color: #434455;
   }
+
+  .container {
+    max-width: 100%;
+    width: 768px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .strategy-list {
+    gap: 24px;
+  }
+
+  .strategy-item {
+    width: calc((100% - 24px) / 2);
+  }
+
+  .team-list {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    column-gap: 24px;
+    row-gap: 64px;
+  }
 }
 
+/* 1158 */
+
 @media screen and (min-width: 1158px) {
+  .container {
+    width: 1158px;
+    padding-left: 15px;
+    padding-right: 15px;
+    margin: 0 auto;
+  }
+
+  .team-item {
+    width: calc((100% - 72px) / 4);
+  }
+
+  .team-title {
+    text-align: center;
+  }
+
+  .strategy-list {
+    gap: 24px;
+  }
+
+  .strategy-item {
+    width: calc((100% - 72px) / 4);
+  }
+
   .strategy-box {
     display: flex;
     align-items: center;
@@ -958,5 +970,15 @@ a {
   .strategy-section {
     padding-top: 120px;
     padding-bottom: 120px;
+  }
+
+  .team-list {
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    flex-wrap: wrap;
+    gap: 24px;
   }
 }
