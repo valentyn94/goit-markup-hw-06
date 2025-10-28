@@ -15,8 +15,6 @@ body {
 }
 
 .container {
-  display: flex;
-  align-items: center;
   width: 320px;
   padding-left: 16px;
   padding-right: 16px;
@@ -27,6 +25,8 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding-top: 16px;
+  padding-bottom: 16px;
 }
 
 /* ===== Typography reset ===== */
@@ -111,6 +111,15 @@ a {
   align-items: center;
 }
 
+/* Hide desktop on mobile */
+.nav-list {
+  display: none;
+}
+
+.contacts {
+  display: none;
+}
+
 .header-box {
   background-color: #ffffff;
   display: flex;
@@ -118,6 +127,172 @@ a {
   border-bottom: 1px solid #e7e9fc;
   box-shadow: 0px 2px 1px rgba(46, 47, 66, 0.08),
     0px 1px 1px rgba(46, 47, 66, 0.16), 0px 1px 6px rgba(46, 47, 66, 0.08);
+}
+
+/* ===== Burger Menu Button ===== */
+.burger-menu {
+  display: block;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.burger-icon {
+  stroke: #2f2f37;
+}
+
+/* ===== Mobile Menu ===== */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #ffffff;
+  z-index: 999;
+  padding: 72px 16px 40px 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transform: translateX(100%);
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu.is-open {
+  transform: translateX(0);
+}
+
+.mobile-menu-close {
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  background-color: transparent;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu-close:hover,
+.mobile-menu-close:focus {
+  background-color: #404bbf;
+  border: none;
+}
+
+.mobile-menu-close-icon {
+  fill: #2e2f42;
+  width: 8px;
+  height: 8px;
+  transition: fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu-close:hover .mobile-menu-close-icon,
+.mobile-menu-close:focus .mobile-menu-close-icon {
+  fill: #ffffff;
+}
+
+.mobile-nav-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.mobile-nav-link {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1.11;
+  letter-spacing: 0.02em;
+  color: #2e2f42;
+  text-decoration: none;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-nav-link:hover,
+.mobile-nav-link:focus,
+.mobile-nav-link.active {
+  color: #404bbf;
+}
+
+.mobile-menu-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+}
+
+.mobile-contacts-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.mobile-contact-link {
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 1.2;
+  letter-spacing: 0.02em;
+  color: #434455;
+  text-decoration: none;
+  font-style: normal;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-contact-link.phone {
+  color: #4d5ae5;
+}
+
+.mobile-contact-link:hover,
+.mobile-contact-link:focus {
+  color: #404bbf;
+}
+
+.mobile-social-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  gap: 40px;
+}
+
+.mobile-social-item {
+  width: 40px;
+  height: 40px;
+}
+
+.mobile-social-link {
+  width: 100%;
+  height: 100%;
+  background-color: #4d5ae5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-social-link:hover,
+.mobile-social-link:focus {
+  background-color: #404bbf;
+}
+
+.mobile-social-icon {
+  fill: #f4f4fd;
 }
 
 .logo-header {
@@ -132,7 +307,6 @@ a {
 }
 
 .nav-list {
-  display: flex;
   gap: 40px;
   margin-left: auto;
   justify-content: flex-start;
@@ -225,35 +399,35 @@ a {
       rgba(46, 47, 66, 0.7),
       rgba(46, 47, 66, 0.7)
     ),
-    url("../images/officepeople.jpeg");
-  padding-top: 188px;
-
-  padding-bottom: 188px;
+    url("../images/officepeople-mob.jpeg");
+  padding-top: 72px;
+  padding-bottom: 72px;
   text-align: center;
   color: white;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
   margin: 0 auto;
+  max-width: 320px;
 }
 
 .hero-section .container {
-  max-width: 1158px;
+  display: block;
   margin: 0 auto;
 }
 
 .hero-name {
   font-family: "Roboto", sans-serif;
   font-weight: 700;
-  font-size: 56px;
-  color: #ffff;
+  font-size: 36px;
+  color: #ffffff;
   text-align: center;
-  max-width: 496px;
-  line-height: 107%;
+  max-width: 216px;
+  line-height: 111%;
   letter-spacing: 0.02em;
   margin: 0 auto;
   display: block;
-  margin-bottom: 48px;
+  margin-bottom: 72px;
 }
 
 /* ===== Strategy Section ===== */
@@ -289,7 +463,6 @@ a {
 .strategy-list {
   display: flex;
   justify-content: space-between;
-  /* gap: 24px; */
   gap: 72px;
   list-style: none;
   padding: 0;
@@ -298,7 +471,6 @@ a {
 }
 
 .strategy-item {
-  /* width: calc((100% - 72px) / 4); */
   width: 100%;
 }
 
@@ -352,7 +524,7 @@ a {
 
 .team-section {
   background-color: #f4f4fd;
-  padding: 120px 0;
+  padding: 96px 0;
 }
 
 .team-title {
@@ -510,10 +682,12 @@ a {
 .footer {
   background-color: #2e2f42;
   color: #ffffff;
-  padding: 100px 0;
+  padding: 96px 0;
 }
 
 .footer-text {
+  text-align: left;
+  justify-content: center;
   line-height: 1.5;
   color: #f4f4fd;
   letter-spacing: 0.02em;
@@ -530,6 +704,7 @@ a {
   color: #4d5ae5;
   margin-bottom: 16px;
   display: inline-block;
+  text-align: center;
 }
 
 .logo-accent-footer {
@@ -544,22 +719,25 @@ a {
 
 .footer-box {
   display: flex;
-  align-items: baseline;
+  flex-direction: column;
+  align-items: center;
+  gap: 72px;
+  text-align: center;
 }
-
 .footer-box-left {
-  margin-right: 120px;
+  margin-right: 0;
 }
 
 .footer-box-right {
   display: flex;
-  align-items: baseline;
-  margin-right: 80px;
+  align-items: center;
+  margin-right: 0;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .social-text {
+  text-align: left;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
@@ -603,15 +781,18 @@ a {
   line-height: 1.5;
   letter-spacing: 0.02em;
   color: #ffffff;
+  text-align: center;
 }
 
 .footer-form-window {
   display: flex;
-  gap: 24px;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 }
 
 .footer-input {
-  width: 264px;
+  width: 288px;
   height: 40px;
   border: 1px solid #ffffff;
   background-color: transparent;
@@ -854,11 +1035,144 @@ a {
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ===== MOBILE MODAL ADAPTATION ===== */
+@media screen and (max-width: 767px) {
+  .modal {
+    width: 288px;
+    padding: 72px 16px 24px 16px;
+  }
+
+  .burger-menu {
+    display: block;
+  }
+}
+
 /* МЕDIA QUERIES */
 
 /* 768 */
 
 @media screen and (min-width: 768px) {
+  /* Header paddings on tablet */
+  .header-box > .container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  /* Align logo and spacing per reference on tablet */
+  .logo {
+    padding: 24px 0;
+    margin-right: 120px;
+  }
+
+  .burger-menu {
+    display: none;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  .nav-list {
+    display: flex;
+  }
+
+  .contacts {
+    display: block;
+  }
+
+  /* Contacts stack vertically on tablet */
+  .contact-list {
+    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .contact-text {
+    font-size: 12px;
+    line-height: 1.17;
+    letter-spacing: 0.04em;
+  }
+
+  .container {
+    width: 768px;
+  }
+
+  .hero-section {
+    background-image: linear-gradient(
+        rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)
+      ),
+      url("../images/officepeople-tablet.jpeg");
+    padding-top: 112px;
+    padding-bottom: 112px;
+    max-width: 768px;
+  }
+
+  .hero-name {
+    font-size: 56px;
+    max-width: 496px;
+    line-height: 107%;
+    margin-bottom: 36px;
+  }
+
+  .footer-box {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .footer-box-left {
+    margin-right: 24px;
+    margin-left: 108px;
+    margin-bottom: 72px;
+    text-align: left;
+  }
+  .footer-box-right {
+    margin-right: 0;
+  }
+
+  .footer-form {
+    text-align: left;
+  }
+
+  .footer-form-title {
+    text-align: left;
+    margin-bottom: 16px;
+    margin-left: 108px;
+  }
+
+  .footer-form-window {
+    flex-direction: row;
+    justify-content: flex-start;
+    margin-left: 108px;
+    gap: 24px;
+  }
+
+  .footer-input {
+    width: 264px;
+  }
+
+  .logo-footer {
+    text-align: left;
+  }
+
+  .footer-text {
+    text-align: left;
+  }
+
+  .footer-form-title {
+    text-align: left;
+    margin-bottom: 16px;
+    margin-left: 108px;
+  }
+
+  .footer-form-window {
+    justify-content: flex-start;
+    margin-left: 108px;
+  }
+
   .strategy-card {
     text-align: left;
     font-weight: 500;
@@ -890,13 +1204,6 @@ a {
     line-height: 150%;
     letter-spacing: 0.02em;
     color: #434455;
-  }
-
-  .container {
-    max-width: 100%;
-    width: 768px;
-    padding-left: 16px;
-    padding-right: 16px;
   }
 
   .strategy-list {
@@ -934,9 +1241,74 @@ a {
   }
 }
 
+/* Mobile retina (≤767px, 2x) */
+@media screen and (max-width: 767px) and (min-resolution: 192dpi) {
+  .hero-section {
+    background-image: linear-gradient(
+        rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)
+      ),
+      url("../images/officepeople-mob@2x.jpeg");
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1157px) and (min-resolution: 192dpi) {
+  .hero-section {
+    background-image: linear-gradient(
+        rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)
+      ),
+      url("../images/officepeople-tablet@2x.jpeg");
+  }
+}
+
 /* 1158 */
 
 @media screen and (min-width: 1158px) {
+  .header-box > .container {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+
+  .logo {
+    margin-right: 76px;
+  }
+
+  /* Contacts inline on desktop */
+  .contact-list {
+    flex-direction: row;
+    gap: 40px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  .contact-text {
+    font-size: 16px;
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+  .hero-section {
+    background-image: linear-gradient(
+        rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)
+      ),
+      url("../images/officepeople.jpeg");
+    padding-top: 188px;
+    padding-bottom: 188px;
+    max-width: 1440px;
+  }
+
+  .hero-section .container {
+    max-width: 1158px;
+  }
+
+  .hero-name {
+    font-size: 56px;
+    max-width: 496px;
+    line-height: 107%;
+    margin-bottom: 48px;
+  }
+
   .container {
     width: 1158px;
     padding-left: 15px;
@@ -944,13 +1316,18 @@ a {
     margin: 0 auto;
   }
 
+  .footer-form-window {
+    justify-content: flex-start;
+    margin-left: 0px;
+  }
+
   /* .team-item {
     width: calc((100% - 72px) / 4);
   } */
 
-  /* .strategy-list {
+  .strategy-list {
     gap: 24px;
-  } */
+  }
 
   .strategy-item {
     width: calc((100% - 72px) / 4);
@@ -989,6 +1366,10 @@ a {
     padding-bottom: 120px;
   }
 
+  .team-section {
+    padding: 120px 0;
+  }
+
   .team-list {
     display: flex;
     justify-content: space-between;
@@ -1015,5 +1396,53 @@ a {
   .first-portfolio-item {
     width: calc((100% - 48px) / 3);
     transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .footer {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  .footer-box {
+    display: flex;
+    align-items: flex-start;
+    flex-wrap: nowrap;
+    flex-direction: row;
+    text-align: left;
+    gap: 0;
+  }
+
+  .footer-box-left {
+    margin-right: 120px;
+    margin-left: 0;
+  }
+
+  .footer-box-right {
+    margin-right: 80px;
+  }
+
+  .footer-form-title {
+    text-align: left;
+    margin-left: 0;
+  }
+
+  .footer-form-window {
+    flex-direction: row;
+    gap: 24px;
+    margin-left: 0;
+  }
+
+  .logo-footer {
+    text-align: left;
+  }
+}
+
+@media screen and (min-width: 1158px) and (min-resolution: 192dpi) {
+  .hero-section {
+    background-image: linear-gradient(
+        rgba(46, 47, 66, 0.7),
+        rgba(46, 47, 66, 0.7)
+      ),
+      url("../images/officepeople@2x.jpeg");
   }
 }
