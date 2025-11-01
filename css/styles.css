@@ -122,7 +122,6 @@ a {
 /* ===== Burger Menu Button ===== */
 .menu-open-btn {
   display: flex;
-  position: absolute;
   right: 16px;
   align-items: center;
   justify-content: center;
@@ -145,10 +144,6 @@ a {
   top: 0;
   left: 0;
   background-color: #fff;
-  padding-top: 24px;
-  padding-right: 24px;
-  padding-left: 16px;
-  padding-bottom: 40px;
   display: none;
   flex-direction: column;
   justify-content: space-between;
@@ -265,6 +260,7 @@ a {
   list-style: none;
   padding: 0;
   margin: 0;
+  padding-bottom: 40px;
   display: flex;
   gap: 40px;
 }
@@ -293,8 +289,6 @@ a {
 .mob-social-icon {
   fill: #f4f4fd;
 }
-
-
 
 .logo-header {
   font-family: "Raleway", sans-serif;
@@ -598,7 +592,7 @@ a {
   display: flex;
   align-items: center;
   flex-direction: column;
-  gap: 24px;
+  gap: 48px;
   list-style: none;
   padding: 0;
   margin: 0;
@@ -739,7 +733,6 @@ a {
 }
 
 .social-text {
-  text-align: left;
   font-weight: 500;
   font-size: 16px;
   line-height: 1.5;
@@ -842,13 +835,19 @@ a {
   height: 100vh;
   background: rgba(46, 47, 66, 0.4);
   display: none;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
   z-index: 10;
   transition: opacity 250ms cubic-bezier(0.4, 0, 0.2, 1),
     visibility 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-.backdrop.inactive {
+.backdrop.is-open {
   display: block;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
 }
 
 .modal {
@@ -987,6 +986,10 @@ a {
   line-height: 1.17;
   letter-spacing: 0.04em;
   color: #8e8f99;
+  position: relative;
+  padding-left: 24px;
+  display: block;
+  min-height: 16px;
 }
 
 .label-span {
@@ -998,6 +1001,10 @@ a {
     border 250ms cubic-bezier(0.4, 0, 0.2, 1),
     fill 250ms cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   align-items: center;
   justify-content: center;
   fill: transparent;
@@ -1019,6 +1026,7 @@ a {
   display: block;
   min-width: 169px;
   height: 56px;
+  padding: 16px 32px;
   font-family: "Roboto", sans-serif;
   font-size: 16px;
   font-weight: 500;
@@ -1028,6 +1036,8 @@ a {
   cursor: pointer;
   background-color: #4d5ae5;
   border: none;
+  border-radius: 4px;
+  box-shadow: 0 4px 4px 0 rgba(0, 0, 0, 0.15);
   transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -1037,8 +1047,6 @@ a {
     width: 288px;
     padding: 72px 16px 24px 16px;
   }
-
-  /* removed legacy .burger-menu */
 }
 
 /* МЕDIA QUERIES */
@@ -1051,7 +1059,7 @@ a {
   }
 
   .mob-menu {
-    display: none;
+    display: none !important;
   }
 
   .header-box > .container {
@@ -1064,7 +1072,10 @@ a {
     margin-right: 120px;
   }
 
-  /* removed legacy .burger-menu and .mobile-menu rules */
+  .team-section {
+    background-color: #f4f4fd;
+    padding: 96px 0;
+  }
 
   .nav-list {
     display: flex;
@@ -1110,6 +1121,7 @@ a {
   }
 
   .footer-box {
+    padding: 0 108px;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -1119,12 +1131,16 @@ a {
 
   .footer-box-left {
     margin-right: 24px;
-    margin-left: 108px;
     margin-bottom: 72px;
     text-align: left;
   }
   .footer-box-right {
     margin-right: 0;
+    align-items: flex-start;
+  }
+
+  .social-text {
+    text-align: left;
   }
 
   .footer-form {
@@ -1134,13 +1150,11 @@ a {
   .footer-form-title {
     text-align: left;
     margin-bottom: 16px;
-    margin-left: 108px;
   }
 
   .footer-form-window {
     flex-direction: row;
     justify-content: flex-start;
-    margin-left: 108px;
     gap: 24px;
   }
 
@@ -1154,17 +1168,6 @@ a {
 
   .footer-text {
     text-align: left;
-  }
-
-  .footer-form-title {
-    text-align: left;
-    margin-bottom: 16px;
-    margin-left: 108px;
-  }
-
-  .footer-form-window {
-    justify-content: flex-start;
-    margin-left: 108px;
   }
 
   .strategy-card {
@@ -1191,7 +1194,6 @@ a {
   .strategy-text {
     line-height: 1.5;
     letter-spacing: 0.02em;
-    max-width: 264px;
     font-family: "Roboto", sans-serif;
     font-weight: 500;
     font-size: 16px;
@@ -1202,6 +1204,7 @@ a {
 
   .strategy-list {
     gap: 24px;
+    row-gap: 72px;
   }
 
   .strategy-item {
@@ -1225,6 +1228,7 @@ a {
     list-style: none;
     padding: 0;
     gap: 24px;
+    row-gap: 72px;
     margin: 0;
     flex-wrap: wrap;
   }
@@ -1271,6 +1275,11 @@ a {
 
   .logo {
     margin-right: 76px;
+  }
+
+  .team-section {
+    background-color: #f4f4fd;
+    padding: 120px 0;
   }
 
   /* Contacts inline on desktop */
@@ -1415,10 +1424,16 @@ a {
   .footer-box-left {
     margin-right: 120px;
     margin-left: 0;
+    margin-bottom: 0;
   }
 
   .footer-box-right {
     margin-right: 80px;
+    align-items: flex-start;
+  }
+
+  .social-text {
+    text-align: left;
   }
 
   .footer-form-title {
@@ -1445,4 +1460,21 @@ a {
       ),
       url("../images/officepeople@2x.jpeg");
   }
+}
+
+.mob-menu-container {
+  padding-left: 16px;
+  padding-top: 24px;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.mob-navigation {
+  margin-top: 0;
+  margin-bottom: auto;
+}
+
+.mob-menu-contacts-item:first-child .mob-menu-contacts-link {
+  color: #4d5ae5;
 }
